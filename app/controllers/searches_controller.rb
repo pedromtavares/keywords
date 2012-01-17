@@ -12,7 +12,6 @@ class SearchesController < InheritedResources::Base
       flash[:notice] = t('searches.no_permission')
       redirect_to root_path
     end
-    super
   end
   
   def create
