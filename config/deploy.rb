@@ -36,7 +36,8 @@ namespace :deploy do
 		run "ln -nfs #{shared_path}/config/services.yml #{release_path}/config/services.yml"
 	end
 	task :restart_workers, :roles => :app do
-	  sudo "restart keywords"
+	  sudo "stop keywords"
+	  sudo "start keywords"
 	end
 end
 
