@@ -13,6 +13,9 @@ gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
 gem 'twitter-bootstrap-rails'
 gem 'twitter'
 gem 'kaminari'
+gem 'capistrano'
+gem 'unicorn'
+gem 'hoptoad_notifier'
 
 # Gems used only for assets and not required
 # in production environments by default.
