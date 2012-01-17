@@ -35,7 +35,11 @@ namespace :deploy do
 	task :symlink_services, :roles => :app do
 		run "ln -nfs #{shared_path}/config/services.yml #{release_path}/config/services.yml"
 	end
+	task :restart_workers, :roles => :app do
+	  sudo "restart keywords"
+	end
 end
 
 after 'deploy:update_code', 'deploy:symlink_db'
 after 'deploy:update_code', 'deploy:symlink_services'
+after 'deploy', 'deploy:restart_workers'

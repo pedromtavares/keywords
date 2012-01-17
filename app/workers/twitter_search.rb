@@ -14,13 +14,13 @@ class TwitterSearch
       high = hash['high']
       basic = hash['basic']
       low = hash['low']
-      user = User.find(user_id)
+      main_user = User.find(user_id)
       search = Search.find(search_id)
       search_settings = {:basic => {:rank => BASIC_RANK, :keywords => basic}, :low => {:rank => LOW_RANK, :keywords => low}, :high => {:rank => HIGH_RANK, :keywords => high}}
       twitter_rank = TwitterRank.new
       log = ''
     
-      user.authenticate
+      main_user.authenticate
       search.start
   
        # first step is to perform a search on twitter for these keywords
@@ -44,7 +44,7 @@ class TwitterSearch
         end
       end
       
-      log << "Finished searching Twitter, #{user.update_rate_limit_status} credits remaining this hour.\n"
+      log << "Finished searching Twitter, #{main_user.update_rate_limit_status} credits remaining this hour.\n"
               
       # filter out accounts that did not make the keyword ranking cutoff
       twitter_rank.users.delete_if {|user| user.rank < CUTOFF}
@@ -63,10 +63,10 @@ class TwitterSearch
       search.save_users(twitter_rank.users)
       search.finish
       log << "Search finished successfully."
-      Resque.enqueue(EmailSender, user.id, search.id) if user.email.present?
+      Resque.enqueue(EmailSender, main_user.id, search.id) if main_user.email.present?
     rescue => ex
       search.shit_happened(:search)
-      log << "An error has occurred in your search, please contact us and provide the text below: \n\n"
+      log << "\n\nAn error has occurred in your search, please contact us and provide the text below: \n\n"
       log << ex.inspect
       log << "\n"
     ensure
