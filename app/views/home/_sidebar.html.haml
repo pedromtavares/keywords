@@ -1,0 +1,8 @@
+= partial('shared/credits')
+%h3= t('searches.latest')
+- if current_user.searches.latest.present?
+  #searches
+    - current_user.searches.latest.each do |search|
+      = partial('searches/search', :search => search, :small => true)
+- else
+  %p= t('searches.blank')

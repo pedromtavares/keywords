@@ -1,0 +1,7 @@
+- small ||= true
+- search.keywords.each do |kw|
+  %div{:class => kw.priority}
+    - if small
+      %span.tokens-token.small-token=kw.name
+    - else
+      %span.tokens-token=kw.name

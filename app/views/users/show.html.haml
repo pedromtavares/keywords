@@ -1,0 +1,15 @@
+%h3= t('shared.account')
+%p
+  = image_tag resource.image_url, :class => 'left'
+  %strong.spaced-left= "#{resource.name} (#{resource.nickname})"
+  %br
+  = link_to t('users.cancel'), user_path, :class => 'btn error spaced-left', :confirm => t('users.are_you_sure'), :method => :delete
+%br.clear
+.alert-message.block-message.warning
+  = t('users.email_notifications')
+  %br.clear
+  %br.clear
+  = form_for resource, :url => user_path do |f|
+    = f.text_field :email, :label => false, :class => 'left spaced-left'
+    = f.submit t('shared.update'), :class => 'btn primary left spaced-left'
+  %br.clear

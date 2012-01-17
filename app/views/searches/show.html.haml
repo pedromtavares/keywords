@@ -1,0 +1,73 @@
+.hero-unit
+  .left= search_state_label(resource, false)
+  .left.spaced-left
+    = t('searches.created_at')
+    %strong= resource.created_at.strftime("%b %e, %H:%M")
+    %br
+  - if resource.finished?
+    .left.spaced-left
+      = t('searches.finished_at')
+      %strong= resource.updated_at.strftime("%b %e, %H:%M")
+  %br.clear
+  %br.clear
+  .alert-message.block-message{:class => search_state_class(resource)}
+    - if resource.queued? || resource.started?
+      = t('searches.explanations.not_finished_search')
+    - if resource.following?
+      = t('searches.explanations.not_finished_follow')
+    - if resource.finished?
+      = t('searches.explanations.finished')
+    - if resource.search_error?
+      = t('searches.explanations.search_error')
+    - if resource.follow_error?
+      = t('searches.explanations.follow_error')
+  .center.auto{:style => 'width:100%'}
+    - if resource.search_error?
+      .left= link_to t('searches.restart_search'), restart_search_path(resource), :method => :post, :class => 'btn primary'
+    - if resource.finished?
+      .spaced-left.left= link_to t('searches.repeat_search'), repeat_search_path(resource), :method => :post, :class => 'btn primary'
+    - if resource.twitter_users.present? && (resource.finished? || resource.follow_error?)
+      .spaced-left.left= link_to t('searches.follow_results'), follow_search_path(resource), :method => :post, :class => 'btn success'
+    .spaced-left.left= link_to t('shared.destroy'), search_path(resource), :method => :delete, :class => 'btn error', :confirm => t('searches.are_you_sure')
+  
+  %br.clear
+  %br.clear
+  .alert-message.block-message.info
+    %h3= t('searches.searched_keywords')
+    = partial('keywords', :search => resource)
+    %br.clear
+  %br.clear
+  
+  %h3= t('searches.user_results')
+  - if resource.twitter_users.present?
+    %table.bordered-table.zebra-striped
+      %thead
+        %tr
+          %th{:width => '20%'}= t('shared.name')
+          %th{:width => '50%'}= t('shared.tweets')
+          %th.center{:width => '30%'}= loading_icon
+      %tbody
+        - resource.twitter_users.each do |twitter_user|
+          %tr{:id => twitter_user.id}
+            %td= link_to twitter_user.name, "http://twitter.com/#{twitter_user.name}", :target => "_blank"
+            %td
+              - twitter_user.tweets.each do |tweet|
+                - keyword = tweet.keywords.first
+                %div{:class => keyword.priority}
+                  %span.help-inline.tokens-token.small-token.left= link_to keyword.name, 'javascript:void(0)', :rel => 'popover', :'data-content' => tweet.body, :'data-original-title' => keyword.name
+            %td
+              - if twitter_user.followed?
+                = partial 'twitter_users/follow_button', :follow => false, :twitter_user => twitter_user
+              - else
+                = partial 'twitter_users/follow_button', :follow => true,  :twitter_user => twitter_user
+              = link_to t('shared.destroy'), twitter_user_path(twitter_user), :class => "btn error small", :method => :delete, :remote => true
+  - else
+    - if resource.finished?
+      = t('searches.no_results')
+    - else
+      = t('searches.searching')
+  %br.clear
+  
+  %h3= t('searches.search_log')
+  %pre=resource.log
+  %br.clear

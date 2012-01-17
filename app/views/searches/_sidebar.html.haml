@@ -1,0 +1,28 @@
+= partial('shared/credits')
+%h3= t('searches.quick_search')
+.alert-message.block-message.info
+  %form.quick
+    .clearfix.success
+      %label=t('shared.basic')
+      .input
+        =text_field_tag 'basic', '', :class => 'token-input error span2', :data => {:priority => 'basic'}, :id => ''
+      .tokens#basic.basic
+  
+    .clearfix.warning
+      %label=t('shared.low')
+      .input
+        =text_field_tag 'low', '', :class => 'token-input error span2', :data => {:priority => 'low'}, :id => ''
+      .tokens#low.low
+    
+    .clearfix.error
+      %label=t('shared.high')
+      .input
+        =text_field_tag 'high', '', :class => 'token-input error span2', :data => {:priority => 'high'}, :id => ''
+      .tokens#high.high
+    
+    %br.all
+    = link_to t('shared.search'), 'javascript:void(0)', :class => 'btn primary', :style => "margin-left:10px;float:left", :id => 'search-button'
+    = link_to t('shared.clear'), 'javascript:void(0)', :class => 'btn', :style => "margin-left:10px;float:left", :id => 'clear-button'
+    .center= loading_icon
+  
+= partial('searches/alerts')

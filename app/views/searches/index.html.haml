@@ -1,0 +1,7 @@
+%h2= t('searches.my')
+- if @searches.present?
+  #searches= render @searches
+  .center=loading_icon
+  #infinite-scroll
+- else
+  %p.center=t('searches.blank')

@@ -1,0 +1,24 @@
+.center{
+  text-align:center;
+}
+.left{
+  float:left !important;
+}
+.right{
+  float:right !important;
+}
+.clear{
+  clear:both !important;
+}
+.auto{
+  margin:auto !important;
+}
+.none{
+  display:none;
+}
+.full{
+  width:100% !important;
+}
+.spaced-left{
+  margin-left:30px;
+}

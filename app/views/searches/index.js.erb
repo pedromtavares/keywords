@@ -1,0 +1,11 @@
+element = $('#searches');
+if ($(element).find('.endless_scroll_inner_wrap').length){
+	var div = '.endless_scroll_inner_wrap';
+}else{
+	var div = element;
+}
+$(div).append("<%= escape_javascript(render collection)%>");
+
+<% if @searches.blank? %>
+	$('#infinite-scroll').detach();
+<% end %>

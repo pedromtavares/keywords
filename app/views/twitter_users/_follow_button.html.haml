@@ -1,0 +1,4 @@
+- if follow
+  = link_to t('twitter_users.follow'), follow_twitter_user_path(twitter_user), :class => "btn primary small disable", :method => :post, :remote => true, :id => "follow_#{twitter_user.id}"
+- else
+  = link_to t('twitter_users.unfollow'), unfollow_twitter_user_path(twitter_user), :class => "btn info small disable", :method => :delete, :remote => true, :id => "unfollow_#{twitter_user.id}"

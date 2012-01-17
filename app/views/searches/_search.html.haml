@@ -1,0 +1,23 @@
+- small ||= false
+- if small
+  .alert-message.block-message.info.search
+    = link_to search.updated_at.strftime("%b %e, %H:%M"), search_path(search)
+    = search_state_label(search)
+    %br.clear
+    = partial('searches/keywords', :search => search)
+    %br.clear
+- else
+  .alert-message.block-message.info.search
+    .left= search_state_label(search, false)
+    .left.spaced-left
+      = t('searches.created_at')
+      %strong= search.created_at.strftime("%b %e, %H:%M")
+      %br
+    - if search.finished?
+      .left.spaced-left
+        = t('searches.finished_at')
+        %strong= search.updated_at.strftime("%b %e, %H:%M")
+    = link_to t('searches.view_search'), search_path(search), :class => 'primary btn small pull-right'
+    %br.clear
+    = partial('searches/keywords', :search => search)
+    %br.clear

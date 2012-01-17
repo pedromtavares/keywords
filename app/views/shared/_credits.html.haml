@@ -1,0 +1,6 @@
+%h3= t('shared.remaining_credits')
+.alert-message.block-message.warning
+  = t('shared.you_have')
+  = current_user.rate_limit_status
+  = t('shared.credits_left')
+  %span.help-inline= link_to t('home.more_info'), 'javascript:void(0)', :rel => 'popover', :'data-content' => t('shared.twitter_info'), :'data-original-title' => t('shared.twitter_credits')

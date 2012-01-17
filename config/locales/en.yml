@@ -1,0 +1,91 @@
+en:
+  shared:
+    app: TweetKeys
+    app_description: Next level searches on Twitter
+    search: Search
+    clear_tokens: Clear All Tokens
+    must_sign: 'You must sign in with Twitter to use this website'
+    footer: "Developed by <a href='http://pedromtavares.com' target='_blank'>Pedro Mateus Tavares</a>"
+    account: Account
+    sign_out: Sign Out
+    sign_in: Sign in with Twitter
+    update: Update
+    basic: Basic
+    low: Low
+    high: High
+    clear: Clear
+    here: here
+    destroy: Destroy
+    name: Name
+    tweets: Tweets
+    remaining_credits: Remaining Credits
+    you_have: You have
+    credits_left: credits left for this hour.
+    twitter_credits: Twitter Credits
+    twitter_info: "Twitter imposes limits for other websites like this one that uses its services. Due to those limits, each user will get 350 'credits' to use per hour, which means that if you expire your credits, you'll have to wait another hour to create a search."
+  home:
+    nav: Home
+    instructions: Instructions
+    instruction1: "This app will help you find Twitter users who are talking about certain things. These users will be listed according to the relevancy of what they're saying and to what you consider important."
+    instruction2: "The mechanism is simple, you input some keywords and define their priority between basic, low and high. We then search Twitter for tweets containing those keywords and return the most relevant users that happen to mention said keywords."
+    instruction3: "To begin, input some keywords by typing them and pressing Return(Enter). Feel free to rearrange them between priorities as you like, and when you're done, click 'Search'."
+    basic_keywords: Basic Keywords
+    low_keywords: Low Keywords
+    high_keywords: High Keywords
+    more_info: More Info
+    basic_info: "The core keywords of your search. This is where you should input most of your keywords as these will be responsible for most of the results. Recommended maximum keyword number: 10-15."
+    low_info: "Least important keywords. These should be more general terms that would yield very inaccurate results by themselves, but, when combined with results coming from the basic or high keywords, would become more relevant. Recommended maximum keyword number: 5-10."
+    high_info: "Most important keywords. Any user who tweets one of these keywords will most likely appear in the results regardless of other keywords, so be very careful when choosing these. Recommended maximum keyword number: 0-3."
+  users:
+    deleted: "Your account was deleted. We're sorry to see you go, but feel free to come back at any time!"
+    cancel: "Cancel Account on TweetKeys"
+    are_you_sure: "Are you sure you want to cancel your account? You will lose ALL your data on TweetKeys, including searches. You CANNOT undo this action."
+    email_notifications: "If you wish to receive e-mail notifications when your searches finish, please input your e-mail below. You can update this field with a blank value at any time to stop receiving these notifications."
+  sessions:
+    failure: 'Something wrong happened while authenticating you, please try again.'
+    signed_in: Signed in successfully.
+    signed_out: Signed out successfully.
+    account_created: "Account created successfully."
+    authentication_required: "You must sign in with Twitter first!"
+  searches:
+    nav: My Searches
+    my: My Searches
+    restarted: "Search was restarted successfully."
+    created: "Search successfully created."
+    created_alert: "Search successfully created! You can check it out"
+    follow: "A task has been issued to follow all results."
+    latest: My Latest Searches
+    blank: "You haven't made any searches yet!"
+    duplicate_keyword: Duplicate keyword!
+    invalid_tokens: You must have at least one Basic or High keyword.
+    created_at: Created at
+    finished_at: Finished at
+    view_search: View Search
+    quick_search: Quick Search
+    restart_search: Restart Search
+    repeat_search: Repeat Search
+    follow_results: Follow All Results
+    are_you_sure: "Are you sure you want to delete this search?"
+    searched_keywords: Searched Keywords
+    user_results: User Results
+    no_results: No users results were found in this search.
+    searching: "Searching..."
+    search_log: Search Log
+    explanations:
+      not_finished_search: "Your search has not finished yet, please wait a while and refresh this page to get full results."
+      not_finished_follow: "We have not yet finished following all user results, please wait a while and refresh the page."
+      finished: "Your search has finished! You may follow each user result one by one or click 'Follow All Results' to follow all of them (don't worry, you can unfollow the ones you don't want later)."
+      search_error: "There was a problem with your search, please try clicking 'Restart Search'. If the problem persists, please contact us and provide the Search Log at the bottom of the page."
+      follow_error: "There was a problem when following user results, please try clicking 'Follow All Results' again. If the problem persists, please contact us and provide the Search Log at the bottom of the page."
+    states:
+      queued: queued
+      started: started
+      finished: finished
+      following: following
+      error: error
+    errors:
+      search: search
+      follow: follow
+  twitter_users:
+    follow: Follow
+    unfollow: Unfollow

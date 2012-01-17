@@ -1,0 +1,64 @@
+.tokens-token {
+  float: left;
+  cursor: default;
+  background-color: #EFF2F7;
+  border: 1px solid #CCD5E4;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  margin: 5px;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+.tokens-remove-token {
+  cursor: pointer;
+  font-style:bold;
+}
+
+.tokens-token.selected {
+  background-color: #5670A6;
+  border-color: #3B5998;
+  color: white;
+}
+
+.basic .tokens-token{
+  background-color:lightgreen;
+}
+.low .tokens-token{
+  background-color:lightyellow;
+}
+.high .tokens-token{
+  background-color:#F08080;
+}
+
+.small-token{
+  margin:3px;
+  padding:0 3px;
+  font-size:8pt;
+}
+
+.search{
+  max-height:200px;
+  overflow:auto;
+}
+
+.quick label{
+  width:30px;
+}
+
+.quick .input{
+  margin: 0;
+}
+
+.quick input{
+  margin-left:10px;
+}
+
+.quick .tokens{
+  margin-top:0;
+}
+
+.quick .tokens-token{
+  margin:2px;
+  padding:0 1px;
+}

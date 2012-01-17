@@ -1,0 +1,17 @@
+nbproject
+.project
+*.log
+*.tmp
+*~
+*.pid
+tmp/*
+log/*
+.redcar/
+.idea/
+public/uploads/
+config/database.yml
+config/services.yml
+.rspec
+.sass-cache/
+*.rdb
+.powder
