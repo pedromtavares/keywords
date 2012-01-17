@@ -44,3 +44,6 @@ end
 after 'deploy:update_code', 'deploy:symlink_db'
 after 'deploy:update_code', 'deploy:symlink_services'
 after 'deploy', 'deploy:restart_workers'
+
+        require './config/boot'
+        require 'airbrake/capistrano'
