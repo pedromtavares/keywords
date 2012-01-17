@@ -72,6 +72,7 @@ en:
     no_results: No users results were found in this search.
     searching: "Searching..."
     search_log: Search Log
+    no_permission: "You don't have permission to access that search."
     explanations:
       not_finished_search: "Your search has not finished yet, please wait a while and refresh this page to get full results."
       not_finished_follow: "We have not yet finished following all user results, please wait a while and refresh the page."

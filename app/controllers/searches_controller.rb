@@ -7,6 +7,14 @@ class SearchesController < InheritedResources::Base
     super
   end
   
+  def show
+    if resource.user != current_user
+      flash[:notice] = t('searches.no_permission')
+      redirect_to root_path
+    end
+    super
+  end
+  
   def create
     keywords = {}
     [:low, :basic, :high].each {|type| keywords[type] = params[type]}
