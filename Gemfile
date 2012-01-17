@@ -15,6 +15,7 @@ gem 'twitter'
 gem 'kaminari'
 gem 'capistrano'
 gem 'unicorn'
+gem 'hoptoad_notifier'
 gem 'airbrake'
 
 # Gems used only for assets and not required
