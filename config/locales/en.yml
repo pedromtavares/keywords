@@ -36,6 +36,7 @@ en:
     basic_info: "The core keywords of your search. This is where you should input most of your keywords as these will be responsible for most of the results. Recommended maximum keyword number: 10-15."
     low_info: "Least important keywords. These should be more general terms that would yield very inaccurate results by themselves, but, when combined with results coming from the basic or high keywords, would become more relevant. Recommended maximum keyword number: 5-10."
     high_info: "Most important keywords. Any user who tweets one of these keywords will most likely appear in the results regardless of other keywords, so be very careful when choosing these. Recommended maximum keyword number: 0-3."
+    must_sign: You must sign in with Twitter to use this website.
   users:
     deleted: "Your account was deleted. We're sorry to see you go, but feel free to come back at any time!"
     cancel: "Cancel Account on TweetKeys"
