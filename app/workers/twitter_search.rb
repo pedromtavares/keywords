@@ -38,7 +38,7 @@ class TwitterSearch
                 twitter_rank.add_user(result['from_user'], result['text'], kw, rank, priority )
               end
             else
-              log << "No results were returned from searching #{kw} on page #{page}."
+              log << "\nNo results were returned from searching #{kw} on page #{page}."
             end
           end
         end

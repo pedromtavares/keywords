@@ -1,6 +1,6 @@
 class Notifications < ActionMailer::Base
     
-	default :from => 'universitasproject@gmail.com'
+	default :from => 'tweetkeysproject@gmail.com'
 	
 	def search_finished(user_id, search_id)
 	  @user = User.find(user_id)

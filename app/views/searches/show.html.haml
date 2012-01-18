@@ -53,8 +53,9 @@
             %td
               - twitter_user.tweets.each do |tweet|
                 - keyword = tweet.keywords.first
-                %div{:class => keyword.priority}
-                  %span.help-inline.tokens-token.small-token.left= link_to keyword.name, 'javascript:void(0)', :rel => 'popover', :'data-content' => tweet.body, :'data-original-title' => keyword.name
+                - if keyword.present?
+                  %div{:class => keyword.priority}
+                    %span.help-inline.tokens-token.small-token.left= link_to keyword.name, 'javascript:void(0)', :rel => 'popover', :'data-content' => tweet.body, :'data-original-title' => keyword.name
             %td
               - if twitter_user.followed?
                 = partial 'twitter_users/follow_button', :follow => false, :twitter_user => twitter_user
