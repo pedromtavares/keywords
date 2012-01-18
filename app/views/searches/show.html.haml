@@ -22,7 +22,7 @@
     - if resource.follow_error?
       = t('searches.explanations.follow_error')
   .center.auto{:style => 'width:100%'}
-    - if resource.search_error?
+    - if resource.search_error? || resource.queued? || resource.started?
       .left= link_to t('searches.restart_search'), restart_search_path(resource), :method => :post, :class => 'btn primary'
     - if resource.finished?
       .spaced-left.left= link_to t('searches.repeat_search'), repeat_search_path(resource), :method => :post, :class => 'btn primary'
