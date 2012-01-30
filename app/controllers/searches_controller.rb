@@ -17,7 +17,7 @@ class SearchesController < InheritedResources::Base
   def create
     keywords = {}
     [:low, :basic, :high].each {|type| keywords[type] = params[type]}
-    @search = current_user.queue_search(keywords)
+    @search = current_user.queue_search(keywords, params[:level])
   end
   
   def restart

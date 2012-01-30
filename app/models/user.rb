@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_many :searches, :dependent => :destroy
   
-  def queue_search(keywords)
-    search = self.searches.create(:state => Search::STATES[:queued])
+  def queue_search(keywords, level)
+    search = self.searches.create(:state => Search::STATES[:queued], :level => level)
     search.save_keywords(keywords)
     Resque.enqueue(TwitterSearch, keywords, self.id, search.id)
     search

@@ -19,6 +19,9 @@
       .input
         =text_field_tag 'high', '', :class => 'token-input error span2', :data => {:priority => 'high'}, :id => ''
       .tokens#high.high
+    .clearfix.info
+      = select_tag 'level', options_for_select(search_levels_options(true), :selected => Search::LEVELS[:basic]), :class => 'small', :style => "margin-left:40px"
+    
     
     %br.all
     = link_to t('shared.search'), 'javascript:void(0)', :class => 'btn primary', :style => "margin-left:10px;float:left", :id => 'search-button'

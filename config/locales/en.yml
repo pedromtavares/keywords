@@ -49,6 +49,7 @@ en:
     account_created: "Account created successfully."
     authentication_required: "You must sign in with Twitter first!"
   searches:
+    singular: Search
     nav: My Searches
     my: My Searches
     restarted: "Search was restarted successfully."
@@ -88,6 +89,12 @@ en:
     errors:
       search: search
       follow: follow
+    levels:
+      low: Shallow
+      basic: Optimal
+      high: Deep
+      info_title: "Search Levels"
+      info_text: "Search levels influence on how thorough you want your search to be, and also affect your Twitter Credits (read more on the sidebar link). Deep searches consume more credits, but return more fine-grained results, whereas shallow searches spend less credits and return lesser grained results."
   twitter_users:
     follow: Follow
     unfollow: Unfollow

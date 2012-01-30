@@ -34,7 +34,8 @@ $(function() {
       $.post('/searches', {
         'low[]': low,
         'basic[]': basic,
-        'high[]': high
+        'high[]': high,
+        'level': $('#level').val()
       })
     }
   });

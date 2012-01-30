@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120113034503) do
+ActiveRecord::Schema.define(:version => 20120130015352) do
 
   create_table "keyword_tweets", :id => false, :force => true do |t|
     t.integer "keyword_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20120113034503) do
     t.string   "error"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "level"
   end
 
   add_index "searches", ["user_id"], :name => "index_searches_on_user_id"

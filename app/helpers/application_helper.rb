@@ -35,4 +35,22 @@ module ApplicationHelper
       t("searches.states.#{search.state}")
     end
   end
+  
+  def search_level_label(search)
+    content_tag :span, :class => "notice label" do
+      t("searches.levels.#{search.level}")
+    end
+  end
+  
+  def search_levels_options(small=false)
+    result = []
+    Search::LEVELS.each do |key, val|
+      if small
+        result << [t("searches.levels.#{key}"), key]
+      else
+        result << ["#{t("searches.levels.#{key}")} #{t('searches.singular')}", key]    
+      end
+    end
+    result
+  end
 end

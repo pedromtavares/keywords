@@ -1,22 +1,23 @@
 class TwitterSearch
   @queue = :twitter_search_queue
   
-  PAGES = 1
   BASIC_RANK = 30
-  LOW_RANK = BASIC_RANK / 3
-  HIGH_RANK = PAGES * BASIC_RANK
-  CUTOFF = HIGH_RANK
-  FOLLOW_MINIMUM = 20
   MAXIMUM_USERS = 50
   
   def self.perform(hash, user_id, search_id)
     begin
-      high = hash['high']
-      basic = hash['basic']
-      low = hash['low']
+      high_kw = hash['high']
+      basic_kw = hash['basic']
+      low_kw = hash['low']
       main_user = User.find(user_id)
       search = Search.find(search_id)
-      search_settings = {:basic => {:rank => BASIC_RANK, :keywords => basic}, :low => {:rank => LOW_RANK, :keywords => low}, :high => {:rank => HIGH_RANK, :keywords => high}}
+      
+      pages = search.pages_from_level
+      low_rank = BASIC_RANK / 3
+      high_rank = pages * BASIC_RANK
+      cutoff = high_rank
+      search_settings = {:basic => {:rank => BASIC_RANK, :keywords => basic_kw}, :low => {:rank => low_rank, :keywords => low_kw}, :high => {:rank => high_rank, :keywords => high_kw}}
+      
       twitter_rank = TwitterRank.new
       log = ''
     
@@ -30,7 +31,7 @@ class TwitterSearch
         next if keywords.blank?
         keywords.each do |kw|
           log << "Searching for keyword: #{kw}\n"
-          (1..PAGES).each do |page|
+          (1..pages).each do |page|
             log << "Searching page #{page} \n"
             results = Twitter.search("\"#{kw}\"", :page => page, :result_type => "recent", :lang => "en")
             unless results.blank?
@@ -44,10 +45,10 @@ class TwitterSearch
         end
       end
       
-      log << "Finished searching Twitter, #{main_user.update_rate_limit_status} credits remaining this hour.\n"
+      log << "\nFinished searching Twitter, #{main_user.update_rate_limit_status} credits remaining this hour.\n"
               
       # filter out accounts that did not make the keyword ranking cutoff
-      twitter_rank.users.delete_if {|user| user.rank < CUTOFF}
+      twitter_rank.users.delete_if {|user| user.rank < cutoff}
     
       # get top ranked accounts to avoid following a bunch of people at once
       unless twitter_rank.users.blank?

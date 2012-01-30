@@ -2,6 +2,7 @@ class Search < ActiveRecord::Base
   
   STATES = {:queued => 'queued', :started => 'started', :finished => 'finished', :following => 'following', :error => 'error'}
   ERRORS = {:search => 'search', :follow => 'follow'}
+  LEVELS = {:low => 'low', :basic => 'basic', :high => 'high'}
   
   belongs_to :user
   has_many :twitter_users, :dependent => :destroy
@@ -38,6 +39,19 @@ class Search < ActiveRecord::Base
   def follow_users
     self.update_attribute(:state, STATES[:following])
     Resque.enqueue(TwitterFollow, self.user.id, self.id)
+  end
+  
+  def pages_from_level
+    case self.level
+    when LEVELS[:low]
+      1
+    when LEVELS[:basic]
+      3
+    when LEVELS[:high]
+      5
+    else
+      3
+    end
   end
   
   # generates state querying methods
