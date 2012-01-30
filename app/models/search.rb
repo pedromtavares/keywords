@@ -33,7 +33,7 @@ class Search < ActiveRecord::Base
   end
   
   def repeat
-    self.user.queue_search(self.keywords_to_hash)
+    self.user.queue_search(self.keywords_to_hash, self.level)
   end
   
   def follow_users
