@@ -13,7 +13,7 @@
   
   %br.clear
   %br.clear
-  .alert-message.block-message{:class => search_state_class(resource)}
+  .alert.alert-block{:class => search_state_class(resource)}
     - if resource.queued? || resource.started?
       = t('searches.explanations.not_finished_search')
     - if resource.following?
@@ -35,7 +35,7 @@
   
   %br.clear
   %br.clear
-  .alert-message.block-message.info
+  .alert.alert-block.alert-info
     %h3= t('searches.searched_keywords')
     = partial('keywords', :search => resource)
     %br.clear

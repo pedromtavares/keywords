@@ -53,4 +53,19 @@ module ApplicationHelper
     end
     result
   end
+
+  def rate_limit_progress_bar(rate)
+    percentage = ((100 * rate.to_i)/350).round
+    klass = case percentage
+    when 0..30
+      "danger"
+    when 30..70
+      "info"
+    else
+      "success"
+    end
+    content_tag :div, :class => "progress progress-#{klass}" do
+      content_tag :div, '', :class => "bar", :style => "width:#{percentage}%", :rel => "tooltip", :'data-title' => "#{percentage}%"
+    end
+  end
 end

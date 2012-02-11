@@ -1,15 +1,11 @@
 $ ->
-  $("body > .topbar").scrollSpy()
-$ ->
-  $(".tabs").tabs()
-$ ->
-  $("a[rel=twipsy]").twipsy live: true
-$ ->
   $("a[rel=popover]").popover offset: 10
+$ ->
+  $("[rel=tooltip]").tooltip()
 $ ->
   $(".topbar-wrapper").dropdown()
 $ ->
-  $(".alert-message").alert()
+  $(".alert").alert()
 $ ->
   domModal = $(".modal").modal(
     backdrop: true

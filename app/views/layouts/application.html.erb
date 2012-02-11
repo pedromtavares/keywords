@@ -7,16 +7,16 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="topbar">
-      <div class="fill">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
         <div class="container">
           <a class="brand" href="/"><%= t('shared.app')%></a>
           <ul class="nav">
             <li class="<%=controller_name == 'home' ? 'active' : ''%>"><a href="/"><%=t('home.nav')%></a></li>
             <% if current_user %>
               <li class="<%=controller_name == 'searches' ? 'active' : ''%>"><%=link_to t('searches.nav'), searches_path%></li>
-              <li class="dropdown pull-right" data-dropdown="dropdown" style="margin-left:300px">
-                <a href="#" class="dropdown-toggle"><%= current_user%></a>
+              <li class="dropdown pull-right" style="margin-left:300px">
+                <a class="dropdown-toggle" data-toggle="dropdown"><%= current_user%></a>
                 <ul class="dropdown-menu">
                   <li><%=link_to t('shared.account'), user_path%></li>
                   <li><%=link_to t('shared.sign_out'), sessions_path, :method => :delete%></li>
@@ -40,8 +40,8 @@
         <div class="row">
           <div class="span10 <%='full' unless current_user%>">
             <% flash.each do |type, message| -%>
-              <div class="alert-message <%= type %> center">
-                <a class="close" href="#">×</a>
+              <div class="alert alert-<%=type%> center">
+                <a class="close" data-dismiss="alert">&times;</a>
                 <p><%= message %></p>
               </div>
             <% end -%>

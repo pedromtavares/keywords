@@ -1,13 +1,13 @@
 - small ||= false
 - if small
-  .alert-message.block-message.info.search
+  .alert.alert-block.alert-info.search
     = link_to search.updated_at.strftime("%b %e, %H:%M"), search_path(search)
     = search_state_label(search)
     %br.clear
     = partial('searches/keywords', :search => search)
     %br.clear
 - else
-  .alert-message.block-message.info.search
+  .alert.alert-block.alert-info.search
     .left= search_state_label(search, false)
     .left.spaced-left
       = t('searches.created_at')
