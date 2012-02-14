@@ -39,7 +39,7 @@ class TwitterSearch
                 twitter_rank.add_user(result['from_user'], result['text'], kw, rank, priority )
               end
             else
-              log << "\nNo results were returned from searching #{kw} on page #{page}."
+              log << "No results were returned from searching #{kw} on page #{page}.\n"
             end
           end
         end
@@ -57,20 +57,19 @@ class TwitterSearch
       else
         log << "No relevant users were returned!\n"
       end
-      
-        
-      # persist all data used
-      log << "Saving records...\n"
-      search.save_users(twitter_rank.users)
+
       search.finish
-      log << "Search finished successfully."
+      log << "Search finished successfully.\n"
       Resque.enqueue(EmailSender, main_user.id, search.id) if main_user.email.present?
     rescue => ex
       search.shit_happened(:search)
       log << "\n\nAn error has occurred in your search, please contact us and provide the text below: \n\n"
       log << ex.inspect
-      log << "\n"
+      log << "\n\n"
     ensure
+      # persist all data used
+      log << "Saving records..."
+      search.save_users(twitter_rank.users) unless twitter_rank.users.blank?
       search.log!(log)
     end
   end
