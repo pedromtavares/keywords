@@ -8,7 +8,7 @@ body {
   text-align: center; /* center align it with the container */
 }
 .container {
-  width: 820px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
+  width: 860px; /* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. */
 }
 
 /* The white background content wrapper */
@@ -68,6 +68,14 @@ body {
   padding:30px;
 }
 
-.row .span4 img{
+.row .span3 img{
   border: 1px solid;
+}
+
+.modal{
+  max-height:550px;
+}
+
+.span-home{
+  width:270px;
 }

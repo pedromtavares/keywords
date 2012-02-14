@@ -31,13 +31,13 @@ module ApplicationHelper
   def search_state_label(search, right = true)
     klass = search_state_class(search)
     klass << " pull-right" if right
-    content_tag :span, :class => "#{klass} label" do
+    content_tag :span, :class => "label label-#{klass}" do
       t("searches.states.#{search.state}")
     end
   end
   
   def search_level_label(search)
-    content_tag :span, :class => "notice label" do
+    content_tag :span, :class => "label-info label" do
       t("searches.levels.#{search.level}")
     end
   end

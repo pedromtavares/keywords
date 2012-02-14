@@ -8,11 +8,13 @@
         - if current_user
           %li{:class => controller_name == 'searches' ? 'active' : ''}=link_to t('searches.nav'), searches_path
           %li{:class => "dropdown pull-right", :style => "margin-left:200px"}
-            = link_to current_user, 'javascript:void(0)', :class => "dropdown-toggle", :data => {:toggle => 'dropdown'}
+            = link_to 'javascript:void(0)', :class => "dropdown-toggle", :data => {:toggle => 'dropdown'} do
+              = current_user
+              %b.caret
             %ul.dropdown-menu
               %li=link_to t('shared.account'), user_path
               %li=link_to t('shared.sign_out'), sessions_path, :method => :delete
       - if current_user
-        = link_to t('searches.new'), '#search-modal', :class => 'btn primary pull-right', :style => "margin-top:5px", :data => {:toggle => "modal"}
+        = link_to t('searches.new'), '#search-modal', :class => 'btn btn-primary pull-right', :style => "margin-top:5px", :data => {:toggle => "modal"}
       - else
-        = link_to t('shared.sign_in'), '/auth/twitter', :class => 'btn primary pull-right', :style => "margin-top:5px"
+        = link_to t('shared.sign_in'), '/auth/twitter', :class => 'btn btn-primary pull-right', :style => "margin-top:5px"

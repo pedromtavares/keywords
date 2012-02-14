@@ -3,19 +3,19 @@
   %p= t('home.page_description')
   %p.center
     - if current_user
-      =link_to t('home.create_search'), '#search-modal', :class => 'btn primary btn-large', :data => {:toggle => "modal"}
+      =link_to t('home.create_search'), '#search-modal', :class => 'btn btn-primary btn-large', :data => {:toggle => "modal"}
     - else
-      =link_to t('home.sign_in_twitter'), '/auth/twitter', :class => 'btn primary btn-large center'
-.row.spaced-left
-  .span4
+      =link_to t('home.sign_in_twitter'), '/auth/twitter', :class => 'btn btn-primary btn-large center'
+.row
+  .span3.span-home
     = image_tag 'auth.png'
     %h2.center= t('home.box1_title')
     %p= t('home.box1_description')
-  .span4
+  .span3.span-home
     = image_tag 'new_search.png'
     %h2.center= t('home.box2_title')
     %p= t('home.box2_description')
-  .span4
+  .span3.span-home
     = image_tag 'users.png'
     %h2.center= t('home.box3_title')
     %p= t('home.box3_description')

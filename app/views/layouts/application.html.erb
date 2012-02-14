@@ -14,7 +14,7 @@
       
       <div class="content">
         <div class="row">
-          <div class="span10">
+          <div class="span8" style="border-right:1px solid #E5E5E5;margin-right:0">
             <% flash.each do |type, message| -%>
               <% type = :success if type == :notice%>
               <div class="alert alert-<%=type%> center">
@@ -25,14 +25,14 @@
             <%= yield%>
           </div>
           <% if current_user %>
-          <div class="span4">
+          <div class="span3" style="margin-left:15px">
             <%= partial('sidebar')%>
             <%= yield :sidebar %>
           </div>
           <% end %>
         </div>
       </div>
-      
+      <hr/>
       <%= partial 'shared/footer' %>
       <%= partial 'shared/new_search'%>
     </div>

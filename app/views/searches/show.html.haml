@@ -11,7 +11,7 @@
       = t('searches.finished_at')
       %strong= resource.updated_at.strftime("%b %e, %H:%M")
     - if resource.level.present?
-      %span.label.notice.spaced-left.left=search_level_label(resource)
+      %span.label.label-info.spaced-left.left=search_level_label(resource)
   
   %br.clear
   %br.clear
@@ -28,12 +28,12 @@
       = t('searches.explanations.follow_error')
   .center.auto{:style => 'width:100%'}
     - if resource.search_error? || resource.queued? || resource.started?
-      .left= link_to t('searches.restart_search'), restart_search_path(resource), :method => :post, :class => 'btn primary'
+      .left= link_to t('searches.restart_search'), restart_search_path(resource), :method => :post, :class => 'btn btn-primary'
     - if resource.finished?
-      .spaced-left.left= link_to t('searches.repeat_search'), repeat_search_path(resource), :method => :post, :class => 'btn primary'
+      .spaced-left.left= link_to t('searches.repeat_search'), repeat_search_path(resource), :method => :post, :class => 'btn btn-primary'
     - if resource.twitter_users.present? && (resource.finished? || resource.follow_error?)
-      .spaced-left.left= link_to t('searches.follow_results'), follow_search_path(resource), :method => :post, :class => 'btn success'
-    .spaced-left.left= link_to t('shared.destroy'), search_path(resource), :method => :delete, :class => 'btn error', :confirm => t('searches.are_you_sure')
+      .spaced-left.left= link_to t('searches.follow_results'), follow_search_path(resource), :method => :post, :class => 'btn btn-success'
+    .spaced-left.left= link_to t('shared.destroy'), search_path(resource), :method => :delete, :class => 'btn btn-danger', :confirm => t('searches.are_you_sure')
   
   %br.clear
   %br.clear
