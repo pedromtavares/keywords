@@ -45,7 +45,7 @@
   
   %h3= t('searches.user_results')
   - if resource.twitter_users.present?
-    %table.bordered-table.zebra-striped
+    %table.table-bordered.table-striped.table
       %thead
         %tr
           %th{:width => '20%'}= t('shared.name')
@@ -66,7 +66,7 @@
                 = partial 'twitter_users/follow_button', :follow => false, :twitter_user => twitter_user
               - else
                 = partial 'twitter_users/follow_button', :follow => true,  :twitter_user => twitter_user
-              = link_to t('shared.destroy'), twitter_user_path(twitter_user), :class => "btn error small", :method => :delete, :remote => true
+              = link_to t('shared.destroy'), twitter_user_path(twitter_user), :class => "btn btn-danger small", :method => :delete, :remote => true
   - else
     - if resource.finished?
       = t('searches.no_results')
