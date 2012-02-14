@@ -16,7 +16,7 @@ role :db,  "66.228.47.42", :primary => true
 
 require './config/boot'
 require 'bundler/capistrano'
-require 'hoptoad_notifier/capistrano'
+require 'airbrake/capistrano'
 
 
 namespace :deploy do
@@ -44,6 +44,4 @@ end
 after 'deploy:update_code', 'deploy:symlink_db'
 after 'deploy:update_code', 'deploy:symlink_services'
 after 'deploy', 'deploy:restart_workers'
-
-        require './config/boot'
-        require 'airbrake/capistrano'
+        
