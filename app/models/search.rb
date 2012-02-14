@@ -28,7 +28,9 @@ class Search < ActiveRecord::Base
     self.twitter_users.each do |twitter_user|
       twitter_user.destroy
     end
-    self.update_attribute(:state, STATES[:queued])
+    self.state = STATES[:queued]
+    self.log = ''
+    self.save
     Resque.enqueue(TwitterSearch, self.keywords_to_hash, self.user.id, self.id)
   end
   
