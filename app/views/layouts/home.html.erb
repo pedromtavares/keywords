@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t('shared.app')%></title>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    
+    <%= partial 'shared/navigation'%>
+    
+    <div class="container">
+      <% flash.each do |type, message| -%>
+        <br/>
+        <div class="alert alert-<%=type%> center">
+          <a class="close" data-dismiss="alert">&times;</a>
+          <p><%= message %></p>
+        </div>
+      <% end -%>
+      <%=yield%>
+      <%= partial 'shared/footer' %>
+      <%= partial 'shared/new_search'%>
+    </div>
+
+  </body>
+</html>

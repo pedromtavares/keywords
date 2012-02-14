@@ -1,50 +1,21 @@
-.alert.alert-block.alert-info
-  %h4= t('home.instructions')
-  %ul
-    %li= t('home.instruction1')
-    %li= t('home.instruction2') 
+.hero-unit
+  %h1= t('home.page_title')
+  %p= t('home.page_description')
+  %p.center
     - if current_user
-      %li
-        %strong= t('home.instruction3')
-    
-= partial('searches/alerts')
-
-- if current_user
-  %form
-    .clearfix.success
-      %label= t('home.basic_keywords')
-      .input
-        =text_field_tag 'basic', '', :class => 'token-input xlarge error', :data => {:priority => 'basic'}, :id => ''
-        %span.help-inline= link_to t('home.more_info'), 'javascript:void(0)', :class => 'success', :rel => 'popover', :'data-content' => t('home.basic_info'), :'data-original-title' => t('home.basic_keywords')
-      %br
-      .tokens#basic.basic
-      %br{:clear => 'all'}
-  
-    .clearfix.warning
-      %label= t('home.low_keywords')
-      .input
-        =text_field_tag 'low', '', :class => 'token-input xlarge error', :data => {:priority => 'low'}, :id => ''
-        %span.help-inline= link_to t('home.more_info'), 'javascript:void(0)', :class => 'warning', :rel => 'popover', :'data-content' => t('home.low_info'), :'data-original-title' => t('home.low_keywords')
-      %br
-      .tokens#low.low
-      %br{:clear => 'all'}
-    
-    .clearfix.error
-      %label= t('home.high_keywords')
-      .input
-        =text_field_tag 'high', '', :class => 'token-input xlarge error', :data => {:priority => 'high'}, :id => ''
-        %span.help-inline= link_to t('home.more_info'), 'javascript:void(0)', :class => 'error', :rel => 'popover', :'data-content' => t('home.high_info'), :'data-original-title' => t('home.high_keywords')
-      %br
-      .tokens#high.high
-      %br{:clear => 'all'}
-      
-    .clearfix.info{:style => "margin-left:180px"}
-      = select_tag 'level', options_for_select(search_levels_options, :selected => Search::LEVELS[:basic]), :class => 'medium'
-      %span.help-inline= link_to t('home.more_info'), 'javascript:void(0)', :class => 'error', :rel => 'popover', :'data-content' => t('searches.levels.info_text'), :'data-original-title' => t('searches.levels.info_title')
-    
-    = link_to t('shared.search'), 'javascript:void(0)', :class => 'btn primary', :style => "margin-left:180px;float:left", :id => 'search-button'
-    = link_to t('shared.clear_tokens'), 'javascript:void(0)', :class => 'btn', :style => "margin-left:10px;float:left", :id => 'clear-button'
-    .center= loading_icon
-- else
-  %br.clear
-  = link_to t('home.must_sign'), '/auth/twitter', :class => 'btn primary', :style => "margin-left:270px"
+      =link_to t('home.create_search'), '#search-modal', :class => 'btn primary btn-large', :data => {:toggle => "modal"}
+    - else
+      =link_to t('home.sign_in_twitter'), '/auth/twitter', :class => 'btn primary btn-large center'
+.row.spaced-left
+  .span4
+    = image_tag 'auth.png'
+    %h2.center= t('home.box1_title')
+    %p= t('home.box1_description')
+  .span4
+    = image_tag 'new_search.png'
+    %h2.center= t('home.box2_title')
+    %p= t('home.box2_description')
+  .span4
+    = image_tag 'users.png'
+    %h2.center= t('home.box3_title')
+    %p= t('home.box3_description')

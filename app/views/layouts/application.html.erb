@@ -7,39 +7,16 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="/"><%= t('shared.app')%></a>
-          <ul class="nav">
-            <li class="<%=controller_name == 'home' ? 'active' : ''%>"><a href="/"><%=t('home.nav')%></a></li>
-            <% if current_user %>
-              <li class="<%=controller_name == 'searches' ? 'active' : ''%>"><%=link_to t('searches.nav'), searches_path%></li>
-              <li class="dropdown pull-right" style="margin-left:300px">
-                <a class="dropdown-toggle" data-toggle="dropdown"><%= current_user%></a>
-                <ul class="dropdown-menu">
-                  <li><%=link_to t('shared.account'), user_path%></li>
-                  <li><%=link_to t('shared.sign_out'), sessions_path, :method => :delete%></li>
-                </ul>
-              </li>
-            <% end %>
-          </ul>
-          <% unless current_user %>
-            <%= link_to t('shared.sign_in'), '/auth/twitter', :class => 'btn primary pull-right', :style => "margin-top:5px"%>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    
+    <%=partial 'shared/navigation'%>
 
     <div class="container">
-
+      
       <div class="content">
-        <div class="page-header">
-          <h1><%= t('shared.app')%> <small><%= t('shared.app_description')%></small></h1>
-        </div>
         <div class="row">
-          <div class="span10 <%='full' unless current_user%>">
+          <div class="span10">
             <% flash.each do |type, message| -%>
+              <% type = :success if type == :notice%>
               <div class="alert alert-<%=type%> center">
                 <a class="close" data-dismiss="alert">&times;</a>
                 <p><%= message %></p>
@@ -50,16 +27,14 @@
           <% if current_user %>
           <div class="span4">
             <%= partial('sidebar')%>
+            <%= yield :sidebar %>
           </div>
           <% end %>
         </div>
       </div>
-
-      <footer>
-        <p><%=t('shared.footer').html_safe%></p>
-      </footer>
-
+      
+      <%= partial 'shared/footer' %>
+      <%= partial 'shared/new_search'%>
     </div>
-
   </body>
 </html>

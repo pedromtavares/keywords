@@ -1,3 +1,4 @@
+$('.modal').modal()
 $ ->
   $("a[rel=popover]").popover offset: 10
 $ ->
@@ -6,10 +7,4 @@ $ ->
   $(".topbar-wrapper").dropdown()
 $ ->
   $(".alert").alert()
-$ ->
-  domModal = $(".modal").modal(
-    backdrop: true
-    closeOnEscape: true
-  )
-  $(".open-modal").click ->
-    domModal.toggle()  
+

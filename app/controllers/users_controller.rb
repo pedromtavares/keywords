@@ -3,6 +3,10 @@ class UsersController < InheritedResources::Base
 	  super
 	end
 	
+	def update
+    update!(:notice => t('users.updated'))
+  end
+	
 	def destroy
 	  current_user.destroy
 	  session[:user_id] = nil

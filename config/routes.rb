@@ -20,6 +20,8 @@ Keywords::Application.routes.draw do
       delete :unfollow
     end
   end
+  
+  resource :about, :only => [:show, :create], :controller => 'about'
 
   root :to => 'home#show'
   match '/auth/twitter/callback' => 'sessions#create'
